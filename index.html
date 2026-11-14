@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toolbox — PDF, зображення, QR-коди та інші інструменти</title>
+  <meta name="description" content="Стиснення й об’єднання PDF, конвертація та зменшення зображень, QR-коди. Безкоштовно, прямо в браузері.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">
+        <span class="logo__mark">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>
+        </span>
+        Toolbox
+      </a>
+      <a class="nav-link" href="#tools">Інструменти</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Універсальний сайт інструментів</h1>
+      <p>Інструменти для PDF, зображень, тексту та паролів в одному місці. Файли обробляються у вашому браузері й нікуди не надсилаються.</p>
+    </section>
+
+    <section id="tools" aria-label="Інструменти">
+      <div class="picker">
+        <button class="pick is-active" type="button" data-tool="pdf-compress"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 14l3 3 3-3"/></svg></span>Стиснення PDF</button>
+        <button class="pick" type="button" data-tool="pdf-merge"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="12" height="14" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/></svg></span>Об’єднання PDF</button>
+        <button class="pick" type="button" data-tool="img-convert"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h14l-3-3M20 16H6l3 3"/></svg></span>Конвертація зображень</button>
+        <button class="pick" type="button" data-tool="qr"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2M14 20h2M20 14v2"/></svg></span>QR-коди</button>
+        <button class="pick" type="button" data-tool="img-reduce"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 15v5h-5M4 4l6 6M20 20l-6-6"/></svg></span>Зменшення фото</button>
+        <button class="pick" type="button" data-tool="img-pdf"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.5"/><path d="m21 16-5-5-8 8"/></svg></span>Зображення в PDF</button>
+        <button class="pick" type="button" data-tool="pdf-split"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8 14h8"/></svg></span>Витяг сторінок PDF</button>
+        <button class="pick" type="button" data-tool="password"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>Генератор паролів</button>
+        <button class="pick" type="button" data-tool="counter"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h9"/></svg></span>Лічильник тексту</button>
+        <button class="pick" type="button" data-tool="percent"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><circle cx="7.5" cy="7.5" r="2"/><circle cx="16.5" cy="16.5" r="2"/></svg></span>Відсотки</button>
+      </div>
+
+      <div class="panel card" id="pdf-compress">
+        <div class="card__head"><div><h2>Стиснення PDF</h2><p>Зменшіть розмір PDF для пошти чи завантаження</p></div></div>
+        <label class="drop"><input type="file" accept="application/pdf,.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span><b>Оберіть PDF</b> або перетягніть сюди</span></label>
+        <label class="field"><span>Рівень стиснення</span>
+          <select id="pc-level"><option value="1.1,0.5">Максимальне</option><option value="1.5,0.7" selected>Збалансоване</option><option value="2,0.85">Краща якість</option></select>
+        </label>
+        <p class="hint">Сторінки перетворюються на зображення, тому текст у результаті не виділяється. Найкраще працює зі сканами та PDF із фото.</p>
+        <div class="actions"><button class="btn run" type="button">Стиснути</button><span class="status" aria-live="polite"></span></div>
+        <ul class="list out"></ul>
+      </div>
+
+      <div class="panel card" id="pdf-merge" hidden>
+        <div class="card__head"><div><h2>Об’єднання PDF</h2><p>Зберіть кілька файлів в один документ</p></div></div>
+        <label class="drop"><input type="file" accept="application/pdf,.pdf" multiple><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span><b>Оберіть PDF-файли</b> або перетягніть сюди</span></label>
+        <ul class="list files"></ul>
+        <p class="hint">Порядок у списку — це порядок сторінок у підсумковому файлі.</p>
+        <div class="actions"><button class="btn run" type="button">Об’єднати</button><span class="status" aria-live="polite"></span></div>
+        <ul class="list out"></ul>
+      </div>
+
+      <div class="panel card" id="img-convert" hidden>
+        <div class="card__head"><div><h2>Конвертація зображень</h2><p>Перетворіть зображення на JPG, PNG або WebP</p></div></div>
+        <label class="drop"><input type="file" accept="image/*" multiple><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span><b>Оберіть зображення</b> або перетягніть сюди</span></label>
+        <label class="field"><span>Конвертувати в</span>
+          <select id="ic-format"><option value="jpg">JPG</option><option value="png">PNG</option><option value="webp">WebP</option></select>
+        </label>
+        <div class="actions"><button class="btn run" type="button">Конвертувати</button><span class="status" aria-live="polite"></span></div>
+        <ul class="list out"></ul>
+      </div>
+
+      <div class="panel card" id="qr" hidden>
+        <div class="card__head"><div><h2>QR-коди</h2><p>Створіть код для посилання або тексту</p></div></div>
+        <label class="field"><span>Посилання або текст</span><input id="qr-text" type="text" placeholder="https://example.com"></label>
+        <canvas id="qr-canvas" hidden></canvas>
+        <div class="actions"><a class="btn" id="qr-save" download="qr-code.png" hidden>Завантажити PNG</a><span class="status" aria-live="polite"></span></div>
+      </div>
+
+      <div class="panel card" id="img-reduce" hidden>
+        <div class="card__head"><div><h2>Зменшення розміру фото</h2><p>Менша вага без помітної втрати якості</p></div></div>
+        <label class="drop"><input type="file" accept="image/*" multiple><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span><b>Оберіть фото</b> або перетягніть сюди</span></label>
+        <div class="row">
+          <label class="field"><span>Найбільша сторона, px</span><input id="ir-max" type="number" min="200" value="1600" inputmode="numeric"></label>
+          <label class="range"><span>Якість: <b id="ir-qv">75</b>%</span><input id="ir-quality" type="range" min="30" max="95" value="75"></label>
+        </div>
+        <p class="hint">Результат зберігається у форматі JPG.</p>
+        <div class="actions"><button class="btn run" type="button">Зменшити</button><span class="status" aria-live="polite"></span></div>
+        <ul class="list out"></ul>
+      </div>
+
+      <div class="panel card" id="img-pdf" hidden>
+        <div class="card__head"><div><h2>Зображення в PDF</h2><p>Зберіть фото та скани в один документ</p></div></div>
+        <label class="drop"><input type="file" accept="image/*" multiple><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span><b>Оберіть зображення</b> або перетягніть сюди</span></label>
+        <p class="hint">Кожне зображення стає окремою сторінкою в порядку вибору.</p>
+        <div class="actions"><button class="btn run" type="button">Створити PDF</button><span class="status" aria-live="polite"></span></div>
+        <ul class="list out"></ul>
+      </div>
+
+      <div class="panel card" id="pdf-split" hidden>
+        <div class="card__head"><div><h2>Витяг сторінок PDF</h2><p>Залиште лише потрібні сторінки</p></div></div>
+        <label class="drop"><input type="file" accept="application/pdf,.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg><span><b>Оберіть PDF</b> або перетягніть сюди</span></label>
+        <label class="field"><span>Сторінки</span><input id="ps-pages" type="text" placeholder="1-3, 5, 8"></label>
+        <div class="actions"><button class="btn run" type="button">Витягнути</button><span class="status" aria-live="polite"></span></div>
+        <ul class="list out"></ul>
+      </div>
+
+      <div class="panel card" id="password" hidden>
+        <div class="card__head"><div><h2>Генератор паролів</h2><p>Надійний випадковий пароль за один клік</p></div></div>
+        <div class="row"><input id="pw-out" type="text" readonly aria-label="Пароль"><button class="btn btn--soft" id="pw-copy" type="button">Копіювати</button></div>
+        <label class="range"><span>Довжина: <b id="pw-len-v">16</b></span><input id="pw-len" type="range" min="8" max="40" value="16"></label>
+        <div class="checks"><label><input type="checkbox" id="pw-digits" checked> Цифри</label><label><input type="checkbox" id="pw-symbols" checked> Символи</label></div>
+        <div class="actions"><button class="btn" id="pw-new" type="button">Згенерувати новий</button><span class="status" aria-live="polite"></span></div>
+      </div>
+
+      <div class="panel card" id="counter" hidden>
+        <div class="card__head"><div><h2>Лічильник тексту</h2><p>Символи, слова та час читання</p></div></div>
+        <textarea id="tc-text" rows="6" placeholder="Вставте або введіть текст" aria-label="Текст"></textarea>
+        <dl class="stats">
+          <div><dt>Символи</dt><dd id="tc-chars">0</dd></div>
+          <div><dt>Слова</dt><dd id="tc-words">0</dd></div>
+          <div><dt>Речення</dt><dd id="tc-sent">0</dd></div>
+          <div><dt>Читання</dt><dd id="tc-time">0 хв</dd></div>
+        </dl>
+      </div>
+
+      <div class="panel card" id="percent" hidden>
+        <div class="card__head"><div><h2>Відсотки</h2><p>Частка від числа, збільшення та зменшення</p></div></div>
+        <div class="row">
+          <label class="field"><span>Відсоток, %</span><input id="pr-p" type="number" inputmode="decimal" placeholder="15"></label>
+          <label class="field"><span>Число</span><input id="pr-n" type="number" inputmode="decimal" placeholder="2000"></label>
+        </div>
+        <ul class="list" id="pr-out" aria-live="polite"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Toolbox</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
